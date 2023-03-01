@@ -1,0 +1,109 @@
+/* General layout and appearance */
+.App {
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #f9f9f9, #f9f9f9, #f9f9f9, #afafaf);
+  color: #333333;
+}
+
+.App > * {
+  margin: 20px 0;
+}
+
+.header {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 20px;
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.header h3 {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #666666;
+}
+
+.code {
+  padding: 2px 4px;
+  color: #33ff33;
+  background-color: black;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Overlay text covering entire canvas */
+.overlay-gradient-text-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.5); /* Subtle overlay */
+  z-index: 10;
+}
+
+/* Gradient text with moving highlight */
+.overlay-gradient-text {
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(90deg, #33ff33, #ff00ff, #33ff33);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300%;
+  animation: gradient-highlight 4s linear infinite;
+}
+
+/* Animation to move the gradient */
+@keyframes gradient-highlight {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+/* Footer */
+.footer {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #686868;
+  text-align: center;
+  border-top: 1px solid #f3f3f3;
+  padding-top: 20px;
+}
+
+.footer a {
+  color: #960c96;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* Faces-license plates*/
+.faces {
+  color: #ff00ff;
+}
+
+.license-plates {
+  color: #33ff33;
+}

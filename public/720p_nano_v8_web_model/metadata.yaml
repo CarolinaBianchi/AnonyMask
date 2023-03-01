@@ -1,0 +1,15 @@
+description: Ultralytics 720p_nano_v8 model trained on C:/velo_dataset/dataset.yaml
+author: Ultralytics
+date: '2024-11-14T11:27:30.053494'
+version: 8.3.31
+license: AGPL-3.0 License (https://ultralytics.com/license)
+docs: https://docs.ultralytics.com
+stride: 32
+task: detect
+batch: 1
+imgsz:
+- 1280
+- 1280
+names:
+  0: plate
+  1: face

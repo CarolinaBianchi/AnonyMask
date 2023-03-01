@@ -1,0 +1,44 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '22.11.0'
+
+    # Step 3: Install dependencies
+    - name: Install Dependencies
+      run: yarn install
+
+    # Step 4: Debug installed modules
+    - name: List Installed Modules
+      run: yarn list --depth=0
+
+    # Step 5: Run ESLint
+    - name: Lint Code
+      run: yarn lint
+
+    # Step 6: Build the project
+    - name: Build Project
+      run: yarn build
+
+    # Step 7: Deploy to GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
