@@ -3,8 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Adjust if you use master
-
+      - test-workflow  
+      
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,35 +14,29 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
 
-    # Step 2: Cache Node.js modules
-    - name: Cache Node.js Modules
-      uses: actions/cache@v3
-      with:
-        path: ~/.yarn
-        key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-
-    # Step 3: Set up Node.js (v22.11.0)
+    # Step 2: Set up Node.js
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '22.11.0'
+        node-version: '16'
 
-    # Step 4: Verify Node.js version
-    - name: Verify Node.js Version
-      run: node -v
+    # Step 3: Install dependencies
+    - name: Install Dependencies
+      run: yarn install
 
-    # Step 5: Lint, test, and build the project
+    # Step 4: Debug installed modules
+    - name: List Installed Modules
+      run: yarn list --depth=0
+
+    # Step 5: Run ESLint
     - name: Lint Code
       run: yarn lint
-      
-    - name: Install and Build
-      run: |
-        yarn install
-        yarn build
 
-    # Step 6: Deploy to GitHub Pages
+    # Step 6: Build the project
+    - name: Build Project
+      run: yarn build
+
+    # Step 7: Deploy to GitHub Pages
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
