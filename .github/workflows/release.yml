@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - test-workflow  
-      
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -18,7 +18,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'
+        node-version: '22.11.0'
 
     # Step 3: Install dependencies
     - name: Install Dependencies
